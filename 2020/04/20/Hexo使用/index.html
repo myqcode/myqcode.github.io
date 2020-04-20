@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, MYQ">
+    <meta name="keywords" content="Hexo使用, MYQ">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | MYQ</title>
+    <title>Hexo使用 | MYQ</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">Hexo使用</h1>
                 </div>
             </div>
         </div>
@@ -442,12 +442,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%8E%A9%E7%89%A9%E6%90%AD%E5%BB%BA/" class="post-category">
+                                玩物搭建
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -456,21 +469,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-19
+                    2020-04-20
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-19
+                    2020-04-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    125
+                    442
                 </div>
                 
 
@@ -492,15 +505,83 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h2 id="1-首先去安装nodejs（官网nodejs-org）"><a href="#1-首先去安装nodejs（官网nodejs-org）" class="headerlink" title="1.首先去安装nodejs（官网nodejs.org）"></a>1.首先去安装nodejs（官网nodejs.org）</h2><p><img src="/2020/04/20/Hexo%E4%BD%BF%E7%94%A8/01.png" alt="01"></p>
+<p><strong>安装：</strong>一直next到底即可</p>
+<pre class=" language-bash"><code class="language-bash">查看是否安装成功
+查看node的版本
+node -v
+
+查看包管理器版本
+<span class="token function">npm</span> -v
+</code></pre>
+<h2 id="2-并生成博客"><a href="#2-并生成博客" class="headerlink" title="2.并生成博客"></a>2.并生成博客</h2><pre class=" language-bash"><code class="language-bash">第二步：
+安装hexo框架（用淘宝源安装）安装cnpm
+<span class="token function">npm</span> <span class="token function">install</span> -g cnpm --registry<span class="token operator">=</span>https://registry.npm.taobao.org
+
+查看cnpm是否安装好
+cnpm -v
+
+安装hexo博客
+cnpm <span class="token function">install</span> -g hexo-cli
+
+查看hexo是否安装好
+hexo -v
+
+随意目录创建一个文件夹K（过程中出现错误直接干掉）
+生成博客
+<span class="token function">sudo</span> hexo init
+
+启动
+hexo s
+
+创建一个博客
+hexo new <span class="token string">"文章名"</span></code></pre>
+<h2 id="3-将本地资源存放在远端的服务器上（免费的）"><a href="#3-将本地资源存放在远端的服务器上（免费的）" class="headerlink" title="3.将本地资源存放在远端的服务器上（免费的）"></a>3.将本地资源存放在远端的服务器上（免费的）</h2><p><img src="/2020/04/20/Hexo%E4%BD%BF%E7%94%A8/02.png" alt="02"></p>
+<h2 id="4-githubssh公钥设置"><a href="#4-githubssh公钥设置" class="headerlink" title="4.githubssh公钥设置"></a>4.githubssh公钥设置</h2><ul>
+<li>首先下载一个git软件</li>
+</ul>
+<p>​    <strong>下载地址：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></strong></p>
+<ul>
+<li><p>一样一直next</p>
+</li>
+<li><p>配置用户名和邮箱</p>
+</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">查看git用户配置
+<span class="token function">git</span> config user.name
+
+查看git邮箱配置
+<span class="token function">git</span> config user.email
+
+配置git用户
+<span class="token function">git</span> config --global user.name <span class="token string">"你的名字"</span>
+
+配置git邮箱
+<span class="token function">git</span> config --global user.email <span class="token string">"你的邮箱"</span>
+
+获取ssh公钥
+<span class="token function">cat</span> ~/.ssh/id_rsa.pub</code></pre>
+<ul>
+<li>设置github公钥</li>
+</ul>
+<p><img src="/2020/04/20/Hexo%E4%BD%BF%E7%94%A8/04.png" alt></p>
+<h2 id="5-装一个git的插件"><a href="#5-装一个git的插件" class="headerlink" title="5.装一个git的插件"></a>5.装一个git的插件</h2><pre class=" language-bash"><code class="language-bash">中途报的错误不用管
+cnpm <span class="token function">install</span> --save hexo-deployer-git</code></pre>
+<p><strong>并修改文件名K下的_config.yml</strong></p>
+<p><img src="/2020/04/20/Hexo%E4%BD%BF%E7%94%A8/03.png" alt></p>
+<p>最后：</p>
+<pre><code>hexo d 部署到远端
+
+第一次部署，中途会出现让你登录github的窗口
+会让你输入github账号密码，最后推送完成</code></pre><p>​                                                                                <strong>修改主题不做赘述</strong></p>
+<h2 id="6-修改玩主题需要重新生成"><a href="#6-修改玩主题需要重新生成" class="headerlink" title="6.修改玩主题需要重新生成"></a>6.修改玩主题需要重新生成</h2><pre class=" language-bash"><code class="language-bash">清除克隆
+hexo clean
+
+重新生成一下
+hexo g
+
+上传到github
+hexo d</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -544,7 +625,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/04/19/hello-world/">http://yoursite.com/2020/04/19/hello-world/</a>
+                    <a href="http://yoursite.com/2020/04/20/Hexo%E4%BD%BF%E7%94%A8/">http://yoursite.com/2020/04/20/Hexo%E4%BD%BF%E7%94%A8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -581,7 +662,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -747,9 +832,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/04/20/Hexo%E4%BD%BF%E7%94%A8/">
                     <div class="card-image">
@@ -777,9 +863,9 @@ npm -v
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -792,6 +878,7 @@ npm -v
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -807,7 +894,7 @@ npm -v
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2020/04/19/hello-world/">
@@ -837,7 +924,6 @@ npm -v
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
