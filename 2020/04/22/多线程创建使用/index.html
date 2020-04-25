@@ -480,7 +480,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-22
+                    2020-04-23
                 </div>
                 
 
@@ -510,7 +510,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="1-线程与进程"><a href="#1-线程与进程" class="headerlink" title="1.线程与进程"></a>1.线程与进程</h2><p>程序：是指一段静态(没有加载，在硬盘的代码)的代码，静态的对象。</p>
-<p><strong>线程</strong>：每个线程有自己独立的堆和程序计数器。当一个程序进入内存运行时，内部可能包含了多个顺序执行流，每个顺序执行流就是一个线程。有一定独立的功能，是分配和调度的一个独立单位，<strong>一个进程的多个线程共享相同的内存单元/内存地址空间，可以同时访问堆，变量，多以多个线程共享资源会造成安全隐患。</strong></p>
+<p><strong>线程</strong>：每个线程有自己独立的堆和程序计数器。当一个程序进入内存运行时，内部可能包含了多个顺序执行流，每个顺序执行流就是一个线程。有一定独立的功能，是分配和调度的一个独立单位，<strong>···一个进程的多个线程共享相同的内存单元/内存地址空间，可以同时访问堆，变量，多以多个线程共享资源会造成安全隐患。</strong></p>
 <p><strong>进程</strong>：每一个运行中的程序就是一个进程。</p>
 <p><strong>并行</strong>：同一时刻多条指令在多个处理器上同时执行。</p>
 <p><strong>并发</strong>：一个进程同时执行多个线程。</p>
@@ -519,6 +519,7 @@
 <p>​    进程之间不能共享内存，线程之间可以共享内存</p>
 <p>​    多线程来实现多任务并发比多线程的效率高（提高cpu利用率）</p>
 <p>​    独立运行，易于理解和修改</p>
+<p><strong>归纳来说：操作系统可以执行多个任务，每个人物都是一个进程，进程可以同时执行多个任务，每个任务就是一个线程</strong></p>
 <h2 id="2-线程的创建和启动"><a href="#2-线程的创建和启动" class="headerlink" title="2.线程的创建和启动"></a>2.线程的创建和启动</h2><h3 id="方式一：继承Thread类创建线程类"><a href="#方式一：继承Thread类创建线程类" class="headerlink" title="方式一：继承Thread类创建线程类"></a>方式一：继承Thread类创建线程类</h3><p>1.第一Thread类的子类，重写该类的run()方法，该run方法的方法体就代表了线程需要完成的任务。</p>
 <p>2.创建Thread子类的实例，创建线程对象。</p>
 <p>3.调用线程对象的start()方法来调用该线程。</p>
@@ -586,7 +587,7 @@ public class CreateThread {
         }
     }
 }</code></pre><p><strong>改线程名要在start前执行</strong></p>
-<p><img src="/2020/04/22/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/01.png" alt></p>
+<p><img src="/2020/04/22/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/01.png" alt=""></p>
 <p><strong>总结：</strong>当设置了优先级是CPU调度时调度到该线程的概率变大，并不是先该线程你执行。</p>
 <h3 id="方式二：用Runnable接口实现创建线程"><a href="#方式二：用Runnable接口实现创建线程" class="headerlink" title="方式二：用Runnable接口实现创建线程"></a>方式二：用Runnable接口实现创建线程</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//1.创建一个类实现runnable(匿名类也行)</span>
 <span class="token keyword">class</span> <span class="token class-name">SubThread</span> <span class="token keyword">implements</span> <span class="token class-name">Runnable</span> <span class="token punctuation">{</span>
@@ -1287,53 +1288,49 @@ public class Call {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/22/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/">
+                <a href="/2020/04/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="多线程创建使用">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="设计模式七大原则">
                         
-                        <span class="card-title">多线程创建使用</span>
+                        <span class="card-title">设计模式七大原则</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.线程与进程程序：是指一段静态(没有加载，在硬盘的代码)的代码，静态的对象。
-线程：每个线程有自己独立的堆和程序计数器。当一个程序进入内存运行时，内部可能包含了多个顺序执行流，每个顺序执行流就是一个线程。有一定独立的功能，是分配和调度的一
+                            单一职责原则：问题的由来：
+T负责两个不同的职责：职责P1，职责P2。当由于职责P1需求发生改变而需要修改类T时，有可能会导致原本运行正常的职责P2功能发生故障。也就是说职责P1和P2被耦合在了一起。
+解决办法：
+遵守单一职责原则，将不同的
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-22
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-23
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JAVA%E8%BF%9B%E9%98%B6/" class="post-category">
-                                    JAVA进阶
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JAVASE/">
-                        <span class="chip bg-color">JAVASE</span>
-                    </a>
-                    
-                    <a href="/tags/Thread/">
-                        <span class="chip bg-color">Thread</span>
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
                     </a>
                     
                 </div>
@@ -1545,7 +1542,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5k</span>&nbsp;字
+                class="white-color">7k</span>&nbsp;字
             
             
             
