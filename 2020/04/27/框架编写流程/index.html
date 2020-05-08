@@ -463,21 +463,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-28
+                    2020-04-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    3.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    17 分
                 </div>
                 
 
@@ -492,7 +492,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>框架编写流程</p>
+                <p><strong>框架编写流程</strong></p>
 <p>1.导包</p>
 <p>​        </p>
 <p>​    日志包    commons-logging-1.1.3.jar<br>​    核心包    spring-beans-4.0.0.RELEASE.jar<br>​    spring-context-4.0.0.RELEASE.jar<br>​    spring-core-4.0.0.RELEASE.jar<br>​    spring-expression-4.0.0.RELEASE.jar</p>
@@ -762,10 +762,9 @@ public void acc(){}</code></pre><p>基于xml配置aop</p>
 一般情况下使用注解，当需要数据安全的时候使用xml配置</code></pre>
 <p>pointcut：切入点</p>
 <h2 id="声明事务"><a href="#声明事务" class="headerlink" title="声明事务"></a>声明事务</h2><p><strong>环境搭建</strong></p>
-<p>​    1.导入sql文件</p>
-<p>​        </p>
+<p>​    <strong>1.导入sql文件</strong></p>
 <p>​        spring-jdbc-4.0.0.RELEASE.jar<br>​        spring-orm-4.0.0.RELEASE.jar<br>​        spring-tx-4.0.0.RELEASE.jar</p>
-<p>​    2.写类方法模拟结账</p>
+<p>​    <strong>2.写类方法模拟结账</strong></p>
 <p><strong>test.xml:</strong></p>
 <pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>
@@ -871,6 +870,126 @@ JdbcTemplate jdbcTemplate <span class="token operator">=</span> aContext<span cl
 <p>这个事务管理器就可以在目标方法运行前后进行事务控制(事务切面)</p>
 <p><strong>快速的为某个方法添加事务</strong></p>
 <p>1.配置出这个事务管理器让他工作</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--事务控制器--></span>
+<span class="token comment" spellcheck="true">&lt;!--1.配置事务管理器让其进行事务控制--></span>
+<span class="token comment" spellcheck="true">&lt;!--控制事务都是拿connection作文章，（设置非自动提交,回滚，关闭连接）--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>TransactionManager<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.springframework.jdbc.datasource.DataSourceTransactionManager<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!--控制哪个数据源--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">></span></span>
+
+<span class="token comment" spellcheck="true">&lt;!--2.开启基于注解的事务控制，依赖名称空间tx--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">tx:</span>annotation-driven</span> <span class="token attr-name">transaction-manager</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>TransactionManager<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span class="token comment" spellcheck="true">&lt;!--3.加注解--></span></code></pre>
+<h3 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h3><p><strong>数据库事务并发问题</strong></p>
+<p>假设现在有两个事务：Transaction01和Transaction02并发执行。</p>
+<p><strong>脏读</strong>：</p>
+<p>​    [1]Transaction01将某条记录的AGE值从20修改为30。</p>
+<p>​    [2]Transaction02读取了Transaction01更新后的值：30。</p>
+<p>​    [3]Transaction01回滚，AGE值恢复到了20。</p>
+<p>​    [4]Transaction02读取到的30就是一个无效的值。</p>
+<p><strong>不可重复读</strong>：</p>
+<p>​    [1]Transaction01读取了AGE值为20。</p>
+<p>​    [2]Transaction02将AGE值修改为30。</p>
+<p>​    [3]Transaction01再次读取AGE值为30，和第一次读取不一致。</p>
+<p><strong>幻读</strong></p>
+<p>​    [1]Transaction01读取了STUDENT表中的一部分数据。</p>
+<p>​    [2]Transaction02向STUDENT表中插入了新的行。</p>
+<p>​    [3]Transaction01读取了STUDENT表时，多出了一些行。</p>
+<p><strong>隔离级别</strong></p>
+<p>数据库系统必须具有隔离并发运行各个事务的能力，使它们不会相互影响，避免各种并发问题。<strong>一个事务与其他事务隔离的程度称为隔离级别</strong>。SQL标准中规定了多种事务隔离级别，不同隔离级别对应不同的干扰程度，隔离级别越高，数据一致性就越好，但并发性越弱。</p>
+<p><strong>读未提交</strong>     READ UNCOMMITTED</p>
+<ul>
+<li>​        允许Transaction01读取Transaction02未提交的修改。</li>
+</ul>
+<p><strong>读已提交</strong>     READ COMMITTED</p>
+<ul>
+<li>​        要求Transaction01只能读取Transaction02已提交的修改。</li>
+</ul>
+<p><strong>可重复读</strong>     REPEATABLE READ</p>
+<ul>
+<li>​        确保Transaction01可以多次从一个字段中读取到相同的值，即Transaction01执行期间禁止其它事务对这个字段进行更新。</li>
+</ul>
+<p><strong>串行化</strong>         SERIALIZABLE</p>
+<ul>
+<li>​        确保Transaction01可以多次从一个表中读取到相同的行，在Transaction01执行期间，禁止其它事务对这个表进行添加、更新、删除操作。可以避免任何并发问题，但性能十分低下。</li>
+</ul>
+<p><strong>读未提交</strong></p>
+<p><img src="/2020/04/27/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/03.png" alt></p>
+<p><strong>读已提交：</strong></p>
+<p>​    读已提交避免了脏读，但是没有避免重复度</p>
+<p><img src="/2020/04/27/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/04.png" alt></p>
+<p><strong>重复读</strong></p>
+<p>​    可重复读的情况下，只要在同一个事务期间</p>
+<p>​    第一次是什么就是什么，即使外界的数据没了</p>
+<p><img src="/2020/04/27/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/05.png" alt></p>
+<p><strong>测试</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    BookDao bookDao<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 哪个用户买了那本书
+     * @return
+     */</span>
+    <span class="token comment" spellcheck="true">/*
+       timeout: 设置超时时间当超过设定的超时时间，抛出异常并将数据回滚。
+       readOnly: default = false(不是只读,可以查询)
+                  如果一个语句里面全是查询可以将readOnly设置为true,可以调高执行效率
+
+       noRollbackFor: 当一些类遇到异常时，可以将一些问题 设置不回滚
+                  运行时类一定会回滚。
+                  编译时异常需要手动的设置。
+
+       rollbackFor: 当编译时报异常时，可以将编译时设置回滚
+
+       propagation:传播  REQUIRED     REQUIRES_NEW
+                  一般使用上面两个
+                  REQUIRED  和上一个事务使用同一个连接(坐老王的车)
+                  REQUIRES_NEW  上一个事务挂起，创建一个新事务(不坐老王的车)
+
+     */</span>
+    <span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>propagation <span class="token operator">=</span> Propagation<span class="token punctuation">.</span>REQUIRED<span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">checkOut</span><span class="token punctuation">(</span>String username<span class="token punctuation">,</span>String isbn<span class="token punctuation">)</span>  <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//减库存</span>
+        bookDao<span class="token punctuation">.</span><span class="token function">updateStock</span><span class="token punctuation">(</span>isbn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//Thread.sleep(2000);</span>
+        <span class="token comment" spellcheck="true">//int i = 1/0;</span>
+
+        <span class="token comment" spellcheck="true">//获取购买书的余额</span>
+        <span class="token keyword">int</span> price <span class="token operator">=</span> bookDao<span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span>isbn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//更改用户余额</span>
+        bookDao<span class="token punctuation">.</span><span class="token function">updateUserSalary</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span>price<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>propagation <span class="token operator">=</span> Propagation<span class="token punctuation">.</span>REQUIRES_NEW<span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">updatePrice</span><span class="token punctuation">(</span>String isbn<span class="token punctuation">,</span><span class="token keyword">int</span> price<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        bookDao<span class="token punctuation">.</span><span class="token function">updatePrice</span><span class="token punctuation">(</span>isbn<span class="token punctuation">,</span>price<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BigBookService</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    BookService bookService<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//当tst(设置了timeout=?只要是和他公用一个连接的不管你设置了timeout=几</span>
+    <span class="token comment" spellcheck="true">//都是使用tst的)</span>
+    <span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>timeout <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">tst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        bookService<span class="token punctuation">.</span><span class="token function">updatePrice</span><span class="token punctuation">(</span><span class="token string">"ISBN-002"</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bookService<span class="token punctuation">.</span><span class="token function">checkOut</span><span class="token punctuation">(</span><span class="token string">"jerry"</span><span class="token punctuation">,</span><span class="token string">"ISBN-001"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test02</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    BigBookService bean <span class="token operator">=</span> aContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>BigBookService<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    bean<span class="token punctuation">.</span><span class="token function">tst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"完成"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="对事务的设置"><a href="#对事务的设置" class="headerlink" title="对事务的设置"></a>对事务的设置</h3><p><strong>修改MySQL隔离级别</strong><br>SET [SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL {READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZABLE}</p>
+<p>如：SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED；</p>
+<p><strong>查询MySQL的隔离级别</strong><br>SELECT @@global.tx_isolation; //查询全局隔离级别<br>SELECT @@session.tx_isolation;//查询当前会话隔离级别<br>SELECT @@tx_isolation;//同上</p>
+<p><strong>事务操作</strong><br>开启事务  start transaction;<br>提交事务  commit;<br>回滚事务  rollback;</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1117,33 +1236,31 @@ JdbcTemplate jdbcTemplate <span class="token operator">=</span> aContext<span cl
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/27/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/">
+                <a href="/2020/04/30/springmvc%E4%BD%BF%E7%94%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="框架编写流程">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="springmvc使用">
                         
-                        <span class="card-title">框架编写流程</span>
+                        <span class="card-title">springmvc使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            框架编写流程
-1.导包
-​        
-​    日志包    commons-logging-1.1.3.jar​    核心包    spring-beans-4.0.0.RELEASE.jar​    spring-context
+                            1.创建springmvc_hello1.首先在web.xml配置DispatcherServletDispatcherServlet主要用作职责调度工作，本身主要用于控制流程。
+&lt;servlet>
+    &lt;servlet-n
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-27
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-30
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1152,7 +1269,6 @@ JdbcTemplate jdbcTemplate <span class="token operator">=</span> aContext<span cl
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -1341,7 +1457,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">9.6k</span>&nbsp;字
+                class="white-color">11.5k</span>&nbsp;字
             
             
             
