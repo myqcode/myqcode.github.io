@@ -470,14 +470,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    594
+                    683
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -576,13 +576,27 @@
 <p><strong>2.RequuestMapping的六个属性</strong></p>
 <p>1.value（默认）：指定请求的实际地址，指定的地址可以是具体地址</p>
 <p>2.method</p>
-<pre><code>@Controller
-public class Test02 {
-    @RequestMapping(value = "/six2",method = RequestMethod.POST)
-    public String test02(){
-        return "test2";
-    }
-}</code></pre><script>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test02</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//method限制页面什么请求（才可以运行）</span>
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/six2"</span><span class="token punctuation">,</span>method <span class="token operator">=</span> RequestMethod<span class="token punctuation">.</span>POST<span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">test02</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"test2"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>3.params</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * params = {"username"}  需要请求有username属性
+ * params = {"username=123"} 需要请求有username属性，并且值为123才能访问
+ * params = {"username=!123"} 需要请求有username属性,并且值不为123才能访问
+ * params = {"!password"} 需要请求没有password属性
+ * @return
+ */</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/six3"</span><span class="token punctuation">,</span>params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"!password"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> String <span class="token function">test03</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">"test3"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1057,7 +1071,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.5k</span>&nbsp;字
+                class="white-color">11.6k</span>&nbsp;字
             
             
             
