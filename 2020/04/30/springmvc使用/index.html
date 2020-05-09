@@ -463,21 +463,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-05-08
+                    2020-05-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    683
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    7 分
                 </div>
                 
 
@@ -552,7 +552,7 @@
         <span class="token keyword">return</span> <span class="token string">"test1"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="RequuestMapping的用法"><a href="#RequuestMapping的用法" class="headerlink" title="RequuestMapping的用法"></a>RequuestMapping的用法</h2><p><strong>1.将RequestMapping放在类名上</strong></p>
+<h2 id="2-RequuestMapping的用法"><a href="#2-RequuestMapping的用法" class="headerlink" title="2.@RequuestMapping的用法"></a>2.@RequuestMapping的用法</h2><p><strong>1.将RequestMapping放在类名上</strong></p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/six"</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@Controller</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test01</span> <span class="token punctuation">{</span>
@@ -574,8 +574,8 @@
 </html></code></pre>
 <p><strong>结论：当将RequestMapping放在类上时表示所有的请求的方法都需要以该地址作为父路径</strong></p>
 <p><strong>2.RequuestMapping的六个属性</strong></p>
-<p>1.value（默认）：指定请求的实际地址，指定的地址可以是具体地址</p>
-<p>2.method</p>
+<p><strong>1.value（默认）</strong>：指定请求的实际地址，指定的地址可以是具体地址</p>
+<p><strong>2.method</strong></p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test02</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">//method限制页面什么请求（才可以运行）</span>
@@ -584,7 +584,7 @@
         <span class="token keyword">return</span> <span class="token string">"test2"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p>3.params</p>
+<p><strong>3.params</strong></p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * params = {"username"}  需要请求有username属性
  * params = {"username=123"} 需要请求有username属性，并且值为123才能访问
@@ -595,6 +595,136 @@
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/six3"</span><span class="token punctuation">,</span>params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"!password"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> String <span class="token function">test03</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token string">"test3"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>结论：request中必须遵守指定参数的限定，才能给予访问</strong></p>
+<p><strong>4.headers</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 谷歌：User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36
+ * 火狐：Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0
+ * 例如如下：只能火狐浏览器才可以访问
+ * @return
+ */</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/six500"</span><span class="token punctuation">,</span>headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> String <span class="token function">test500</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"test500....."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"test500"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>结论：指定request中必须包含某些指定的header值，才能让该方法处理请求</strong></p>
+<h3 id="consumes，produces"><a href="#consumes，produces" class="headerlink" title="consumes，produces"></a>consumes，produces</h3><hr>
+<h3 id="模糊查询："><a href="#模糊查询：" class="headerlink" title="模糊查询："></a>模糊查询：</h3><p><strong>优先匹配范围小的</strong></p>
+<p><u>?的用法</u></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * ？：表示匹配一个字符，例如：http://localhost:8888/mvc_test01/six5
+ * @return
+ */</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/six?"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> String <span class="token function">test04</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"test4....."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"test4"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><u>*的用法</u></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 可以匹配一个或多个字符，例如：http://localhost:8888/mvc_test01/six123
+ * 只能可以匹配一层目录，例如：http://localhost:8888/mvc_test01/121/six123
+ * @return
+ */</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/*/six*"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> String <span class="token function">test05</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"test5....."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"test4"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><u>**的用法</u></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 可以匹配一个或多个字符
+ * 可以匹配多层目录，例如：http://localhost:8888/mvc_test01/121/1/six123
+ * @return
+ */</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/**/six*"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> String <span class="token function">test06</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"test6....."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"test4"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="PathVariable的使用"><a href="#PathVariable的使用" class="headerlink" title="@PathVariable的使用"></a>@PathVariable的使用</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * @PathVariable
+ * 路径上可以有占位符，占位符语法就是在指定位置上写上{}
+ * 例如：http://localhost:8888/mvc_test01/username=myq
+ *  占位符的路径只有一层
+ * @param id
+ * @return
+ */</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"username={id}"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> String <span class="token function">test07</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> String id<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//获取需要的参数值</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"test6"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="3-REST"><a href="#3-REST" class="headerlink" title="3.REST"></a>3.REST</h2><p><strong>Rest:系统希望以非常简洁的URL地址来发请求</strong></p>
+<p>怎么样表示对一个资源的增删改查用请求方式来区分</p>
+<p>/getBook？id=1              ：查询book</p>
+<p>/deleteBook？id=1        ：删除book</p>
+<p>/updateBook？id=1      ：更新book</p>
+<p>/addBook？                    ：添加book</p>
+<p><strong>Rest推荐：</strong></p>
+<p>​    <strong>url地址这么起名：/资源名/资源标识符</strong></p>
+<p>/book/1                    :GET—-查询一号图书</p>
+<p>/book/1                    :PUT—-更新一号图书</p>
+<p>/book/1                    :DELETE—-删除图书</p>
+<p>/book                        :POST—-添加图书</p>
+<p><strong>如何从页面发起PUT，DELETE形式的请求?spring提供了对 Rest风格的支持</strong></p>
+<p>1.springmvc中有一个Filter，它可以把普通的请求转化为规定形式的请求：配置filter</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>HiddenHttpMethodFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">></span></span>org.springframework.web.filter.HiddenHttpMethodFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>HiddenHttpMethodFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">></span></span></code></pre>
+<p><strong>2.如何发其他形式的请求？</strong></p>
+<p>​       按照以下要求，</p>
+<p><strong>1.创建一个post类型的表单</strong> </p>
+<p><strong>2.表单项中携带一个_method的参数</strong> </p>
+<p><strong>3.这个_method的值就是DELETE，PUT</strong></p>
+<pre class=" language-jsp"><code class="language-jsp">//创建一个post类型的表单 
+<form method="post" action="book/1">
+//表单项中携带一个_method的参数 
+//这个_method的值就是DELETE，PUT
+  <input name="_method" value="delete">
+  <input type="submit" value="删除图书">
+</form><br></code></pre>
+<p><strong>当tomcat是8.0及以上版本时会报错如下图</strong></p>
+<p><img src="/2020/04/30/springmvc%E4%BD%BF%E7%94%A8/02.png" alt=""></p>
+<p>只需要将目标文件添加如下：(<strong>isErrorPage=”true”</strong>)</p>
+<pre class=" language-jsp"><code class="language-jsp"><%@ page contentType="text/html;charset=UTF-8" language="java" isErrorPage="true" %></code></pre>
+<h3 id="RequestParam的使用"><a href="#RequestParam的使用" class="headerlink" title="@RequestParam的使用"></a>@RequestParam的使用</h3><p><strong>作用：获取请求时的参数：相当于request.getParameter(xxxx);</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 可以获取请求带的参数
+ * @RequestParam有三个参数用来限定
+ * required : 当请求没有这个参数时不做响应(不报错，继续访问跳转网页)
+ * defaultValue: 当请求没有这个参数时默认的值
+ * value :user = request.parameter("username");
+ *
+ * @param username
+ * @return
+ */</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"hello?"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> String <span class="token function">test02</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"user"</span><span class="token punctuation">,</span>required <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span>defaultValue <span class="token operator">=</span> <span class="token string">"666"</span><span class="token punctuation">)</span> String username<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"ok"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="RequestHeader的使用"><a href="#RequestHeader的使用" class="headerlink" title="@RequestHeader的使用"></a>@RequestHeader的使用</h3><p><strong>作用：获取请求头的参数信息</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * @RequestHeader ：可以获取请求头的参数
+ * value :获取哪个请求头的参数
+ * required :当请求没有这个参数时不做响应(不报错，继续访问跳转网页)
+ * defaultValue :当请求没有这个参数时默认的值
+ * @param UserAgent
+ * @return
+ */</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/hello4"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> String <span class="token function">test03</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestHeader</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"User-Agent"</span><span class="token punctuation">)</span> String UserAgent<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>UserAgent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"ok"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1071,7 +1201,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.6k</span>&nbsp;字
+                class="white-color">12.5k</span>&nbsp;字
             
             
             
