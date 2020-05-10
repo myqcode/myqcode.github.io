@@ -29,8 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="MYQ" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -512,7 +511,7 @@
 <p><strong>在web容器启动时，DispatcherServlet会初始化，然后它会做上面这些事情</strong>：<br>DispatcherServlet是前台控制器，配置在web.xml中，拦截匹配的请求，Servlet拦截匹配规则要自己定义，把拦截下来的请求，依据某某规则分发到目标Controller，这个过程需要</p>
 <p><strong>ioc容器：</strong></p>
 <pre><code>&lt;!--配置扫描--&gt;
-&lt;context:component-scan base-package="cn.myq"/&gt;</code></pre><p><strong>类：</strong></p>
+&lt;context:component-scan base-package=&quot;cn.myq&quot;/&gt;</code></pre><p><strong>类：</strong></p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Hello</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">//设置请求</span>
@@ -524,7 +523,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p><strong>目录结构</strong>：</p>
-<img src="/2020/04/30/springmvc%E4%BD%BF%E7%94%A8/01.png" style="zoom:67%;">
+<img src="/01.png" style="zoom:67%;" />
 
 
 
@@ -568,7 +567,7 @@
   &lt;title&gt;$Title$&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;a href="six/six1"&gt;点我&lt;/a&gt;
+&lt;a href=&quot;six/six1&quot;&gt;点我&lt;/a&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><p><strong>结论：当将RequestMapping放在类上时表示所有的请求的方法都需要以该地址作为父路径</strong></p>
 <p><strong>2.RequuestMapping的六个属性</strong></p>
@@ -685,11 +684,11 @@
 <p><strong>2.表单项中携带一个_method的参数</strong> </p>
 <p><strong>3.这个_method的值就是DELETE，PUT</strong></p>
 <pre><code>//创建一个post类型的表单 
-&lt;form method="post" action="book/1"&gt;
+&lt;form method=&quot;post&quot; action=&quot;book/1&quot;&gt;
 //表单项中携带一个_method的参数 
 //这个_method的值就是DELETE，PUT
-  &lt;input name="_method" value="delete"&gt;
-  &lt;input type="submit" value="删除图书"&gt;
+  &lt;input name=&quot;_method&quot; value=&quot;delete&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;删除图书&quot;&gt;
 &lt;/form&gt;&lt;br&gt;</code></pre><p><strong>class：</strong></p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 增加
@@ -711,7 +710,7 @@
     <span class="token keyword">return</span> <span class="token string">"ok"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p><strong>当tomcat是8.0及以上版本时会报错如下图</strong></p>
-<p><img src="/2020/04/30/springmvc%E4%BD%BF%E7%94%A8/02.png" alt></p>
+<p><img src="/02.png" alt=""></p>
 <p>只需要将目标文件添加如下：(<strong>isErrorPage=”true”</strong>)</p>
 <pre class=" language-jsp"><code class="language-jsp"><%@ page contentType="text/html;charset=UTF-8" language="java" isErrorPage="true" %></code></pre>
 <hr>
@@ -771,10 +770,10 @@
 <span class="token punctuation">}</span></code></pre>
 <p><strong>jsp：</strong></p>
 <pre><code>&lt;body&gt;
-    &lt;form action="hello8"&gt;
-        &lt;input type="text" name="bookName"&gt;
-        &lt;input type="text" name="author"&gt;
-        &lt;input type="submit"&gt;
+    &lt;form action=&quot;hello8&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;bookName&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;author&quot;&gt;
+        &lt;input type=&quot;submit&quot;&gt;
     &lt;/form&gt;
 &lt;/body&gt;</code></pre><p>解决：</p>
 <p><strong>可能遇到中文乱码问题请转到如下链接</strong></p>
@@ -867,8 +866,7 @@
     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"视图跳转成功hello07"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token string">"redirect:/index01.jsp"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p><strong>解决一些Controller方法只是为了跳转页面，如果多了可能会写很多这样的空方法</strong></p>
-<p>使用如下方法，写在mvc。xml中</p>
+<h4 id="解决一些Controller方法只是为了跳转页面，如果多了可能会写很多这样的空方法"><a href="#解决一些Controller方法只是为了跳转页面，如果多了可能会写很多这样的空方法" class="headerlink" title="解决一些Controller方法只是为了跳转页面，如果多了可能会写很多这样的空方法"></a><strong>解决一些Controller方法只是为了跳转页面，如果多了可能会写很多这样的空方法</strong></h4><p>使用如下方法，写在mvc。xml中</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--发送一个请求(“hello09”):直接来到web-inf下的jsp页面，无需在controller里写
      空方法
     path：指定的是哪个请求
@@ -881,25 +879,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>annotation-driven</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">mvc:</span>annotation-driven</span><span class="token punctuation">></span></span></code></pre>
 <h3 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h3><p><a href="https://blog.csdn.net/weixin_44066293/article/details/89194643" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44066293/article/details/89194643</a></p>
 <p><a href="https://blog.csdn.net/u013014636/article/details/72357415" target="_blank" rel="noopener">https://blog.csdn.net/u013014636/article/details/72357415</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 
@@ -1356,7 +1336,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.3k</span>&nbsp;字
+                class="white-color">12.8k</span>&nbsp;字
             
             
             
@@ -1456,8 +1436,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

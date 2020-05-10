@@ -29,8 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="MYQ" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -470,7 +469,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    243
+                    191
                 </div>
                 
 
@@ -492,31 +491,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="maven环境配置"><a href="#maven环境配置" class="headerlink" title="maven环境配置"></a>maven环境配置</h2><p><img src="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/01.png" alt></p>
+                <h2 id="maven环境配置"><a href="#maven环境配置" class="headerlink" title="maven环境配置"></a>maven环境配置</h2><p><img src="/01.png" alt=""></p>
 <p><strong>配置path</strong></p>
-<p><img src="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/02.png" alt></p>
+<p><img src="/02.png" alt=""></p>
 <p>maven运行需要依赖java_home,要确保环境中有JAVA_HOME.</p>
 <p><strong>查看是否配置成功</strong></p>
-<p><img src="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/03.png" alt></p>
+<p><img src="/03.png" alt=""></p>
 <p><strong>指定jar包目录</strong></p>
 <p>当设置了之后，启动maven工程会从设置的目录中寻找jar包</p>
-<p><img src="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/04.png" alt></p>
-<h2 id="IDEA集成本地maven"><a href="#IDEA集成本地maven" class="headerlink" title="IDEA集成本地maven"></a>IDEA集成本地maven</h2><p><img src="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/05.png" alt></p>
+<p><img src="/04.png" alt=""></p>
+<h2 id="IDEA集成本地maven"><a href="#IDEA集成本地maven" class="headerlink" title="IDEA集成本地maven"></a>IDEA集成本地maven</h2><p><img src="/05.png" alt=""></p>
 <p><strong>解决为了在不联网的情况下创建maven工程</strong></p>
-<p><img src="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/06.png" alt></p>
+<p><img src="/06.png" alt=""></p>
 <p><strong>内容：</strong>-DarchetypeCatalog=internal</p>
-<h2 id="创建maven工程："><a href="#创建maven工程：" class="headerlink" title="创建maven工程："></a>创建maven工程：</h2><h3 id="普通java工程"><a href="#普通java工程" class="headerlink" title="普通java工程"></a>普通java工程</h3><img src="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/07.png" style="zoom: 33%;">
+<h2 id="创建maven工程："><a href="#创建maven工程：" class="headerlink" title="创建maven工程："></a>创建maven工程：</h2><h3 id="普通java工程"><a href="#普通java工程" class="headerlink" title="普通java工程"></a>普通java工程</h3><img src="/07.png" style="zoom: 33%;" />
 
-<img src="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/08.png" style="zoom:33%;">
+<img src="/08.png" style="zoom:33%;" />
 
 <p>​        </p>
 <p>maven自定义配置</p>
-<img src="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/09.png" style="zoom:50%;">
+<img src="/09.png" style="zoom:50%;" />
 
-<img src="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/10.png" style="zoom:50%;">
+<img src="/10.png" style="zoom:50%;" />
 
 <p><strong>配置阿里云镜像</strong></p>
-<p><img src="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/11.png" alt></p>
+<p><img src="/11.png" alt=""></p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirror</span><span class="token punctuation">></span></span>
           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>nexus-aliyun<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrorOf</span><span class="token punctuation">></span></span>central<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrorOf</span><span class="token punctuation">></span></span>
@@ -529,25 +528,7 @@
 <p><a href="https://blog.csdn.net/jinhaijing/article/details/81134784" target="_blank" rel="noopener">https://blog.csdn.net/jinhaijing/article/details/81134784</a></p>
 <hr>
 <p>参考文献：<a href="https://blog.csdn.net/jinhaijing/article/details/81134784" target="_blank" rel="noopener">https://blog.csdn.net/jinhaijing/article/details/81134784</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 
@@ -1005,7 +986,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.3k</span>&nbsp;字
+                class="white-color">12.8k</span>&nbsp;字
             
             
             
@@ -1105,8 +1086,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

@@ -29,8 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="MYQ" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -562,15 +561,15 @@ p<span class="token operator">:</span>age<span class="token operator">=</span><s
     <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"name"</span> value<span class="token operator">=</span><span class="token string">"卢本伟"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>property<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>bean<span class="token operator">></span></code></pre>
 <p><strong>autowire自动装配</strong>(可以按照名，类型，构造器进行装配)</p>
-<pre><code>&lt;bean id="cart" class="cn.myq.bean.Cart"&gt;
-    &lt;property name="name" value="汽车"&gt;&lt;/property&gt;
+<pre><code>&lt;bean id=&quot;cart&quot; class=&quot;cn.myq.bean.Cart&quot;&gt;
+    &lt;property name=&quot;name&quot; value=&quot;汽车&quot;&gt;&lt;/property&gt;
 &lt;/bean&gt;
 &lt;!--autowire自动装配
     byName:按名称装配 ，会查看有没有与自定义属性类型相同的，id要相同
     byType:按类型装配
     constructor:按构造器装配
 --&gt;
-&lt;bean id="person01" class="cn.myq.bean.Person" autowire="byType"&gt;
+&lt;bean id=&quot;person01&quot; class=&quot;cn.myq.bean.Person&quot; autowire=&quot;byType&quot;&gt;
 
 &lt;/bean&gt;</code></pre><p><strong>SpringEL表达式</strong></p>
 <pre><code>静态方法的调用
@@ -594,7 +593,7 @@ p<span class="token operator">:</span>age<span class="token operator">=</span><s
 &lt;!--context:component-scan自动扫面组件 --&gt;
     &lt;!--     base-package：要扫描的组件范围 --&gt;
 
-    &lt;context:component-scan base-package="cn.myq"&gt;&lt;/context:component-scan&gt;
+    &lt;context:component-scan base-package=&quot;cn.myq&quot;&gt;&lt;/context:component-scan&gt;
 
  类
  * 默认id类名首字母小写
@@ -605,22 +604,22 @@ public class BookDao {
 
 public void test() {
         //默认单实例
-        Object bean = aContext.getBean("bookDao");
-        Object bean2 = aContext.getBean("bookDao");
+        Object bean = aContext.getBean(&quot;bookDao&quot;);
+        Object bean2 = aContext.getBean(&quot;bookDao&quot;);
 
         System.err.println(bean==bean2);
     }
 </code></pre><p>实验16：使用context:include-filter指定扫描包时要包含的类</p>
-<pre><code>&lt;context:component-scan base-package="cn.myq"&gt;
-        &lt;context:include-filter type="assignable"                                                                                        expression="cn.myq.servlet.BookServlet"/&gt;
+<pre><code>&lt;context:component-scan base-package=&quot;cn.myq&quot;&gt;
+        &lt;context:include-filter type=&quot;assignable&quot;                                                                                        expression=&quot;cn.myq.servlet.BookServlet&quot;/&gt;
     &lt;/context:component-scan&gt;</code></pre><p>实验17：使用context:exclude-filter指定扫描包时不包含的类 </p>
 <pre><code>&lt;!-- exclude-filter:不包含
         type:annotation 按照注解去除
             assignable 按照全类名去除
         expression:要过滤的内容
         --&gt;
-&lt;context:component-scan base-package="cn.myq"&gt;
-&lt;context:exclude-filter type="assignable" expression="cn.myq.servlet.BookServlet"/&gt;
+&lt;context:component-scan base-package=&quot;cn.myq&quot;&gt;
+&lt;context:exclude-filter type=&quot;assignable&quot; expression=&quot;cn.myq.servlet.BookServlet&quot;/&gt;
 &lt;/context:component-scan&gt;</code></pre><h2 id="AOP的引入"><a href="#AOP的引入" class="headerlink" title="AOP的引入"></a>AOP的引入</h2><p>面向切面编程：基于oop基础之上的编程思想；</p>
 <p>指在程序运行期间，将某段代码动态的切入到指定方法的指定位置进行运行的这种编程思想，面向切面编程。</p>
 <p><strong>proxy代理人</strong></p>
@@ -642,9 +641,9 @@ public void test() {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 //                method是要执行那个对象的方法
 //                args方法的参数
-                System.out.println("动态代理之前");
+                System.out.println(&quot;动态代理之前&quot;);
                 Object invoke = method.invoke(calculator, args);
-                System.out.println("动态代理之后");
+                System.out.println(&quot;动态代理之后&quot;);
                 return invoke;
             }
         };
@@ -689,7 +688,7 @@ public void test() {
 <p>关于切入点表达式：</p>
 <p>​    <strong>execution([权限修饰符] [返回值类型] [简单类名/全类名] <a href="[参数列表]">方法名</a>)</strong></p>
 <hr>
-<p><img src="/2020/04/27/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/01.png" alt></p>
+<p><img src="/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/01.png" alt=""></p>
 <p> 4.开启基于注解的AOP功能：</p>
 <pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>aop<span class="token operator">:</span>aspectj<span class="token operator">-</span>autoproxy<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>aop<span class="token operator">:</span>aspectj<span class="token operator">-</span>autoproxy<span class="token operator">></span></code></pre>
 <p>3.测试</p>
@@ -704,13 +703,13 @@ public void test() {
  * joinPoint封装了当前目标方法的详细信息（CalculatorImpl.*(..))）
      returning表示返回指
  */
-@AfterReturning(value = "execution(public * cn.myq.jisuanqi.impl.CalculatorImpl.*(..))",returning = "result")
+@AfterReturning(value = &quot;execution(public * cn.myq.jisuanqi.impl.CalculatorImpl.*(..))&quot;,returning = &quot;result&quot;)
 public void return1(JoinPoint joinPoint,Object result){
     //获取各个参数值
     Object[] args = joinPoint.getArgs();
     //getSignature获取签名
     joinPoint.getSignature().getName();
-    System.out.println("结束记录日志"+ "参数列表" + Arrays.asList(args) + result);
+    System.out.println(&quot;结束记录日志&quot;+ &quot;参数列表&quot; + Arrays.asList(args) + result);
 }</code></pre><p><strong>当需要获取返回值和异常信息时</strong></p>
 <p>1.就要在直接里面添加对应的设置，返回值returning，throwing</p>
 <p>2.在方法体中加入对应的变量</p>
@@ -718,9 +717,9 @@ public void return1(JoinPoint joinPoint,Object result){
 <pre><code>/*抽取可重用的切入点表达式
     1.随便声明一个没有返回值的方法
     2.在上面加上@Pointcut注解（公共抽取的设置）
-    使用 ---&gt;&gt;  @Before("acc()")
+    使用 ---&gt;&gt;  @Before(&quot;acc()&quot;)
 */
-@Pointcut("execution(public * cn.myq.jisuanqi.impl.CalculatorImpl.*(..))")
+@Pointcut(&quot;execution(public * cn.myq.jisuanqi.impl.CalculatorImpl.*(..))&quot;)
 public void acc(){}</code></pre><p>基于xml配置aop</p>
 <pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>相当于给类加上了 <span class="token annotation punctuation">@service</span> <span class="token annotation punctuation">@Controller</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>-<span class="token operator">-</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>bean id<span class="token operator">=</span><span class="token string">"calculator01"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"cn.myq.calculator.impl.CalculatorImpl"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>bean<span class="token operator">></span>
@@ -866,7 +865,7 @@ JdbcTemplate jdbcTemplate <span class="token operator">=</span> aContext<span cl
 }</code></pre><p>事务管理代码的固定模式作为一种横切关注点，可以通过AOP方法模块化，进而借助Spring AOP框架实现声明式事务管理。</p>
 <p>由于自己写这个切面还是很麻烦：</p>
 <p>这个切面spring已经有了，(事务切面，事务管理器)</p>
-<p><img src="/2020/04/27/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/02.png" alt></p>
+<p><img src="/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/02.png" alt=""></p>
 <p>这个事务管理器就可以在目标方法运行前后进行事务控制(事务切面)</p>
 <p><strong>快速的为某个方法添加事务</strong></p>
 <p>1.配置出这个事务管理器让他工作</p>
@@ -915,14 +914,14 @@ JdbcTemplate jdbcTemplate <span class="token operator">=</span> aContext<span cl
 <li>​        确保Transaction01可以多次从一个表中读取到相同的行，在Transaction01执行期间，禁止其它事务对这个表进行添加、更新、删除操作。可以避免任何并发问题，但性能十分低下。</li>
 </ul>
 <p><strong>读未提交</strong></p>
-<p><img src="/2020/04/27/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/03.png" alt></p>
+<p><img src="/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/03.png" alt=""></p>
 <p><strong>读已提交：</strong></p>
 <p>​    读已提交避免了脏读，但是没有避免重复度</p>
-<p><img src="/2020/04/27/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/04.png" alt></p>
+<p><img src="/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/04.png" alt=""></p>
 <p><strong>重复读</strong></p>
 <p>​    可重复读的情况下，只要在同一个事务期间</p>
 <p>​    第一次是什么就是什么，即使外界的数据没了</p>
-<p><img src="/2020/04/27/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/05.png" alt></p>
+<p><img src="/%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99%E6%B5%81%E7%A8%8B/05.png" alt=""></p>
 <p><strong>测试</strong></p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
@@ -990,25 +989,7 @@ JdbcTemplate jdbcTemplate <span class="token operator">=</span> aContext<span cl
 <p>如：SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED；</p>
 <p><strong>查询MySQL的隔离级别</strong><br>SELECT @@global.tx_isolation; //查询全局隔离级别<br>SELECT @@session.tx_isolation;//查询当前会话隔离级别<br>SELECT @@tx_isolation;//同上</p>
 <p><strong>事务操作</strong><br>开启事务  start transaction;<br>提交事务  commit;<br>回滚事务  rollback;</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+
             </div>
             <hr/>
 
@@ -1457,7 +1438,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.3k</span>&nbsp;字
+                class="white-color">12.8k</span>&nbsp;字
             
             
             
@@ -1557,8 +1538,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
