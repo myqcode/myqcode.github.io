@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Filter, MYQ">
+    <meta name="keywords" content="AOP, MYQ">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Filter | MYQ</title>
+    <title>AOP | MYQ</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -321,12 +321,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Filter</h1>
+                    <h1 class="description center-align post-title">AOP</h1>
                 </div>
             </div>
         </div>
@@ -455,28 +455,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-21
+                    2020-05-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-21
+                    2020-05-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    729
+                    953
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -491,50 +491,142 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-filter有什么作用？"><a href="#1-filter有什么作用？" class="headerlink" title="1.filter有什么作用？"></a>1.filter有什么作用？</h2><ul>
-<li><p>Filter也称之为过滤器，它是Servlet技术中最实用的技术，Web开发人员通过Filter技术，对web服务器管理的所有web资源。</p>
-</li>
-<li><p>例如实现URL级别的权限访问控制、过滤敏感词汇、压缩响应信息等一些高级功能。例如对Jsp, Servlet, 静态图片文件或静态 html 文件等进行拦截，从而实现一些特殊的功能。</p>
-</li>
-<li><p>它主要用于对用户请求进行预处理，也可以对HttpServletResponse进行后处理。使用Filter的完整流程：Filter对用户请求进行预处理，接着将请求交给Servlet进行处理并生成响应，最后Filter再对服务器响应进行后处理。</p>
-</li>
-</ul>
-<p><img src="/Filter/01.png" alt=""></p>
-<h2 id="2-Filter的生命周期"><a href="#2-Filter的生命周期" class="headerlink" title="2.Filter的生命周期"></a>2.Filter的生命周期</h2><ul>
-<li><p>和我们编写的Servlet程序一样，Filter的创建和销毁由WEB服务器负责。 web 应用程序启动时，web 服务器将创建Filter 的实例对象，并调用其init方法，读取web.xml配置，完成对象的初始化功能，从而为后续的用户请求作好拦截的准备工作</p>
-</li>
-<li><p>filter对象只会创建一次，init方法也只会执行一次。开发人员通过init方法的参数，可获得代表当前filter配置信息的FilterConfig对象。</p>
-</li>
-<li><p>这个方法完成实际的过滤操作。当客户请求访问与过滤器关联的URL的时候，Servlet过滤器将先执行doFilter方法。FilterChain参数用于访问后续过滤器。</p>
-</li>
-<li><p>Filter对象创建后会驻留在内存e799bee5baa6e79fa5e98193e78988e69d8331333431346339，当web应用移除或服务器停止时才销毁。在Web容器卸载 Filter 对象之前被调用。该方法在Filter的生命周期中仅执行一次。在这个方法中，可以释放过滤器使用的资源。</p>
-</li>
-</ul>
-<p>模拟用户登录</p>
-<pre class=" language-bash"><code class="language-bash">当用户需要访问filter配置过的路径时，需要判断是否成立，成立条件就是用servlet判断用户名是否正确
-filter通过查看用户名是否正确来判断权限的开放。</code></pre>
-<h2 id="3-Filter的特点"><a href="#3-Filter的特点" class="headerlink" title="3.Filter的特点"></a>3.Filter的特点</h2><p>​    多个filter过滤器的特点：</p>
-<p>​    1.所有的filter都执行在同一个线程中（默认）。</p>
-<p>​    2.共享一个request对象</p>
-<p>​    filterchain.dofilter()方法的作用</p>
-<p>​        1.执行下一个filter过滤器（如果有的情况下）</p>
-<p>​        2.执行目标资源</p>
-<p>​    在多个filter指向同一个目标源时，他们的优先顺序时在xml里的配置顺序</p>
-<p><img src="/Filter/03.png" alt=""></p>
-<h2 id="4-Fileter的配置如下"><a href="#4-Fileter的配置如下" class="headerlink" title="4.Fileter的配置如下"></a>4.Fileter的配置如下</h2><pre><code> &lt;filter&gt;
-        &lt;filter-name&gt;helloFilter&lt;/filter-name&gt;
-        &lt;filter-class&gt;cn.myq.filter.HelloFilter&lt;/filter-class&gt;
-    &lt;/filter&gt;
+                <h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><p><strong>aop：面向切面编程。</strong></p>
+<p><strong>面向切面编程思想指的是：在程序运行期间<u>将某段代码动态的切入到指定方法的在指定位置</u>进行运行的这种编程方式，面向编程思想。</strong></p>
+<p><strong>比如</strong>：在计算机运行计算方法的时候进行日志的记录，</p>
+<p>需要在<strong>计算之前记录</strong>，计算之后记录，出现异常记录，正常完成记录。</p>
+<p>1.直接卸载方法内部，显得代码冗余度高</p>
+<p>2.希望，在<strong>核心功能运行期间自己动态的加上日志记录</strong>，可以使用<strong>动态代理</strong>。</p>
+<p><strong>但是使用动态代理也有缺点：只能基于接口进行代理</strong>。</p>
+<p>Spring实现了AOP功能，底层就是动态代理</p>
+<p>1.利用spring创建动态代理</p>
+<p>​    实现简单，没有强制要求目标对象实现接口</p>
+<p><strong>Aop的专用术语</strong></p>
+<p><img src="/01.png" alt=""></p>
+<h3 id="AOP的使用："><a href="#AOP的使用：" class="headerlink" title="AOP的使用："></a>AOP的使用：</h3><p><strong>首先导入切面所依赖的jar包</strong></p>
+<p>spring-aspects-5.2.3.RELEASE.jar</p>
+<p>第三方增强版</p>
+<p>com.springsource.net.sf.cglib-2.2.0.jar<br>com.springsource.org.aopalliance-1.0.0.jar<br>com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar</p>
+<p><strong>目录结构如下</strong></p>
+<p><img src="/02.png" alt=""></p>
+<p><strong>Calculator</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Calculator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> <span class="token function">jia</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    &lt;filter-mapping&gt;
-        &lt;filter-name&gt;helloFilter&lt;/filter-name&gt;
-            &lt;!--
-            当访问该目录下的任何一个文件时调用，HelloFilter程序
-            判断权限是否开放
-            --&gt;
-        &lt;url-pattern&gt;/admin/*&lt;/url-pattern&gt;
-    &lt;/filter-mapping&gt;</code></pre><h2 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h2><p><a href="https://zhidao.baidu.com/question/471427755.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/471427755.html</a></p>
-<p><a href="http://www.atguigu.com/" target="_blank" rel="noopener">http://www.atguigu.com/</a></p>
+    <span class="token keyword">int</span> <span class="token function">jian</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> <span class="token function">cheng</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> <span class="token function">chu</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>CalculatorImpl</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CalculatorImpl</span> <span class="token keyword">implements</span> <span class="token class-name">Calculator</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">jia</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a<span class="token operator">+</span>b<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">jian</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a<span class="token operator">-</span>b<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">cheng</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a<span class="token operator">*</span>b<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">chu</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a<span class="token operator">/</span>b<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>Aspect</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//@Aspect叫该类设置为切面类</span>
+<span class="token comment" spellcheck="true">//想要在目标方法执行之前以运行,需要写切入点表达式</span>
+<span class="token comment" spellcheck="true">//execution(权限修饰符 返回值类型 方法全类名 (参数类型))</span>
+<span class="token annotation punctuation">@org</span><span class="token punctuation">.</span>aspectj<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Aspect
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Aspect</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@After</span><span class="token punctuation">(</span><span class="token string">"execution(public int cn.myq.service.CalculatorImpl.*(int,int))"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">after</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法运行之前"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span><span class="token string">"execution(public int cn.myq.service.CalculatorImpl.*(int,int))"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法最终之后"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@AfterThrowing</span><span class="token punctuation">(</span><span class="token string">"execution(public int cn.myq.service.CalculatorImpl.*(int,int))"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">exception</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法出异常"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@AfterReturning</span><span class="token punctuation">(</span><span class="token string">"execution(public int cn.myq.service.CalculatorImpl.*(int,int))"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">afterReturn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法正常返回"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>spring-config.xml：</strong></p>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--扫面--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>component-scan</span> <span class="token attr-name">base-package</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cn.myq<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span class="token comment" spellcheck="true">&lt;!--扫面切面--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">aop:</span>aspectj-autoproxy</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">aop:</span>aspectj-autoproxy</span><span class="token punctuation">></span></span></code></pre>
+<p><strong>测试：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//当被且面的类实现了接口，就只能通过该类的接口获取</span>
+    <span class="token comment" spellcheck="true">//如果没有接口直接使用本类也能</span>
+    Calculator calculator <span class="token operator">=</span> aContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>Calculator<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    calculator<span class="token punctuation">.</span><span class="token function">jia</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<h3 id="Aop细节"><a href="#Aop细节" class="headerlink" title="Aop细节"></a><strong>Aop细节</strong></h3><h4 id="切入点表达式"><a href="#切入点表达式" class="headerlink" title="切入点表达式"></a><strong>切入点表达式</strong></h4><p><img src="/03.png" alt=""></p>
+<hr>
+<h4 id="JoinPoint，throwing，throwing"><a href="#JoinPoint，throwing，throwing" class="headerlink" title="JoinPoint，throwing，throwing"></a>JoinPoint，throwing，throwing</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//throwing = "yichang",当有异常，异常保存在yichang中</span>
+<span class="token annotation punctuation">@AfterThrowing</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"execution(public int cn.myq.service.CalculatorImpl.*(int,int))"</span><span class="token punctuation">,</span>throwing <span class="token operator">=</span> <span class="token string">"yichang"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//切入点方法的信息全都保存在了joinPoint</span>
+<span class="token comment" spellcheck="true">//Exception yichang范围写大点，接收所有异常</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">exception</span><span class="token punctuation">(</span>JoinPoint joinPoint<span class="token punctuation">,</span>Exception yichang<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//getSignature获取签名(切入点方法的详细信息)</span>
+    String name <span class="token operator">=</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name <span class="token operator">+</span> <span class="token string">":方法出异常,异常信息"</span> <span class="token operator">+</span> yichang<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<h4 id="抽取公共的切入点表达式"><a href="#抽取公共的切入点表达式" class="headerlink" title="抽取公共的切入点表达式"></a>抽取公共的切入点表达式</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//随便创建一个类，加上@Pointcut</span>
+<span class="token comment" spellcheck="true">//抽取公共的切入点表达式</span>
+<span class="token annotation punctuation">@Pointcut</span><span class="token punctuation">(</span><span class="token string">"execution(public int cn.myq.service.CalculatorImpl.*(int,int))"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">public01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
+<p><strong>使用：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span><span class="token string">"public01()"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span>JoinPoint joinPoint<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    String name <span class="token operator">=</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name <span class="token operator">+</span> <span class="token string">":方法最终之后"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<p><strong>环绕通知</strong></p>
+<p><strong>作用：快速的创建动态代理</strong></p>
+<p><strong>核心</strong>： <strong>proceed = pjp.proceed(args);</strong>等于动态代理的method.invoke</p>
+<p>可以在此方法的上下添加一些需要的功能。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//切入点</span>
+<span class="token annotation punctuation">@Around</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"public01()"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//ProceedingJoinPoint是JoinPoint的子接口</span>
+<span class="token keyword">public</span> Object <span class="token function">myAround</span><span class="token punctuation">(</span>ProceedingJoinPoint pjp<span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"执行环绕通知"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Object<span class="token punctuation">[</span><span class="token punctuation">]</span> args <span class="token operator">=</span> pjp<span class="token punctuation">.</span><span class="token function">getArgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    String name <span class="token operator">=</span> pjp<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Object proceed <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name <span class="token operator">+</span> <span class="token string">"1方法执行之前参数是"</span> <span class="token operator">+</span> Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//相当于method.invoke</span>
+        <span class="token comment" spellcheck="true">//proceed返回值就是方法执行后的返回值</span>
+        proceed <span class="token operator">=</span> pjp<span class="token punctuation">.</span><span class="token function">proceed</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name <span class="token operator">+</span> <span class="token string">"1方法执行完成返回值是"</span> <span class="token operator">+</span> proceed <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name <span class="token operator">+</span> <span class="token string">"1方法出现异常"</span> <span class="token operator">+</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name <span class="token operator">+</span> <span class="token string">"1正确执行完成"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> proceed<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<hr>
 
             </div>
             <hr/>
@@ -560,7 +652,7 @@ filter通过查看用户名是否正确来判断权限的开放。</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/04/21/Filter/">http://yoursite.com/2020/04/21/Filter/</a>
+                    <a href="http://yoursite.com/2020/05/13/AOP/">http://yoursite.com/2020/05/13/AOP/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -763,59 +855,42 @@ filter通过查看用户名是否正确来判断权限的开放。</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/04/21/IDEA%E6%93%8D%E4%BD%9C/">
+                <a href="/2020/05/13/AOP/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="IDEA操作">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="AOP">
                         
-                        <span class="card-title">IDEA操作</span>
+                        <span class="card-title">AOP</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            IDEA基本配置操作：
-1.设置IDEA鼠标悬停(提示注释)
-2.设置自动导包
-3.设置方法之间的分隔符
-4.当数据源多时(多把数据源输出,多行效率高)
-5.修改类头的文档注释信息
-${PACKAGE_NAME} - the name of
+                            AOPaop：面向切面编程。
+面向切面编程思想指的是：在程序运行期间将某段代码动态的切入到指定方法的在指定位置进行运行的这种编程方式，面向编程思想。
+比如：在计算机运行计算方法的时候进行日志的记录，
+需要在计算之前记录，计算之后记录，出现异
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-13
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E7%BD%AE/" class="post-category">
-                                    软件设置
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Myq
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/JAVA/">
-                        <span class="chip bg-color">JAVA</span>
-                    </a>
-                    
-                    <a href="/tags/IDEA/">
-                        <span class="chip bg-color">IDEA</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -826,54 +901,41 @@ ${PACKAGE_NAME} - the name of
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/20/Hexo%E4%BD%BF%E7%94%A8/">
+                <a href="/2020/05/01/MAVEN%E4%BD%BF%E7%94%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Hexo使用">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="MAVEN使用">
                         
-                        <span class="card-title">Hexo使用</span>
+                        <span class="card-title">MAVEN使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1.首先去安装nodejs（官网nodejs.org）
-安装：一直next到底即可
-查看是否安装成功
-查看node的版本
-node -v
+                            maven环境配置
+配置path
 
-查看包管理器版本
-npm -v
+maven运行需要依赖java_home,要确保环境中有JAVA_HOME.
+查看是否配置成功
 
-2.并生成博客第二步：
-安装hexo框架（用淘宝源安装）安装cnp
+指定jar包目录
+当设置了之后，启动maven工程会从设置的目录中寻找jar包
+
+IDEA集成本地mave
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%8E%A9%E7%89%A9%E6%90%AD%E5%BB%BA/" class="post-category">
-                                    玩物搭建
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Myq
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
                 </div>
                 
             </div>
