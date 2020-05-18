@@ -462,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-29
+                    2020-05-14
                 </div>
                 
 
@@ -942,10 +942,11 @@ JdbcTemplate jdbcTemplate <span class="token operator">=</span> aContext<span cl
 
        rollbackFor: 当编译时报异常时，可以将编译时设置回滚
 
-       propagation:传播  REQUIRED     REQUIRES_NEW
+       propagation:传播行为  REQUIRED     REQUIRES_NEW
                   一般使用上面两个
                   REQUIRED  和上一个事务使用同一个连接(坐老王的车)
                   REQUIRES_NEW  上一个事务挂起，创建一个新事务(不坐老王的车)
+                  当坐上了”老王的车时车速是看老王的不是自己的“
 
      */</span>
     <span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>propagation <span class="token operator">=</span> Propagation<span class="token punctuation">.</span>REQUIRED<span class="token punctuation">)</span>
@@ -1438,7 +1439,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.5k</span>&nbsp;字
+                class="white-color">19.4k</span>&nbsp;字
             
             
             

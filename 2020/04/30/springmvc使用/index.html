@@ -462,21 +462,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-05-10
+                    2020-05-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    11 分
                 </div>
                 
 
@@ -551,8 +551,12 @@
         <span class="token keyword">return</span> <span class="token string">"test1"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
+<p><strong>DispatcherServlet细节：</strong></p>
+<img src="/04.png" style="zoom:80%;" />
+
 <h2 id="2-请求参数："><a href="#2-请求参数：" class="headerlink" title="2.请求参数："></a>2.请求参数：</h2><h3 id="1-RequuestMapping的用法"><a href="#1-RequuestMapping的用法" class="headerlink" title="1.@RequuestMapping的用法"></a>1.@RequuestMapping的用法</h3><p><strong>1.将RequestMapping放在类名上</strong></p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/six"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//示例http://localhost:8888/mvc_test02/six/six1    访问才有效</span>
 <span class="token annotation punctuation">@Controller</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test01</span> <span class="token punctuation">{</span>
     <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/six1"</span><span class="token punctuation">)</span>
@@ -561,7 +565,7 @@
         <span class="token keyword">return</span> <span class="token string">"test1"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p>index.jsp改成如下:</p>
+<p><strong>index.jsp改成如下:</strong></p>
 <pre><code>&lt;html&gt;
 &lt;head&gt;
   &lt;title&gt;$Title$&lt;/title&gt;
@@ -877,6 +881,14 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>view-controller</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/hello09<span class="token punctuation">"</span></span> <span class="token attr-name">view-name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ok<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">mvc:</span>view-controller</span><span class="token punctuation">></span></span>
 <span class="token comment" spellcheck="true">&lt;!--开启MVC注解驱动模式，开启mvc高级模式，解决其他注解不好使--></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>annotation-driven</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">mvc:</span>annotation-driven</span><span class="token punctuation">></span></span></code></pre>
+<h4 id="当引入jquery时，使用页面发现jquery404"><a href="#当引入jquery时，使用页面发现jquery404" class="headerlink" title="当引入jquery时，使用页面发现jquery404"></a><strong>当引入jquery时，使用页面发现jquery404</strong></h4><p><strong>引入下面配置：</strong></p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>default-servlet-handler</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">mvc:</span>default-servlet-handler</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>annotation-driven</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">mvc:</span>annotation-driven</span><span class="token punctuation">></span></span></code></pre>
+<h4 id="日期格式化"><a href="#日期格式化" class="headerlink" title="日期格式化"></a>日期格式化</h4><p>在需要添加日期格式化的javabean对象上添加@DateTimeFormat(日期格式)注解</p>
+<p><strong>spring.xml配置如下</strong></p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.springframework.format.support.FormattingConversionServiceFactoryBean<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">></span></span></code></pre>
 <h3 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h3><p><a href="https://blog.csdn.net/weixin_44066293/article/details/89194643" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44066293/article/details/89194643</a></p>
 <p><a href="https://blog.csdn.net/u013014636/article/details/72357415" target="_blank" rel="noopener">https://blog.csdn.net/u013014636/article/details/72357415</a></p>
 
@@ -1336,7 +1348,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.5k</span>&nbsp;字
+                class="white-color">19.4k</span>&nbsp;字
             
             
             
